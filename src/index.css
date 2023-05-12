@@ -56,7 +56,7 @@ button.next-question {
   text-align: center;
   font-size: 1.2rem;
   color: #0c396a;
-  background-color: #FCF300;
+  /* background-color: #FCF300; */
   min-height: 100vh;
   padding-top: 40px;
 }
@@ -67,11 +67,11 @@ button.next-question {
   }
 }
 
-@media only screen and (max-width: 480px) {
+/* @media only screen and (max-width: 480px) {
   .App {
     background-color: #FCF300;
   }
-}
+} */
 
 .App-header {
   background-color: #FFD700;

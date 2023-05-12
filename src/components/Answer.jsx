@@ -19,6 +19,7 @@ const Answer = (props) => {
     showResult,
   } = props;
 
+
   const handleAnswerClick = (event) => {
     setSelectedAnswer(event.target.value);
     setShowAnswer(true);
@@ -69,11 +70,13 @@ const Answer = (props) => {
                 onChange={handleAnswerClick}
                 checked={selectedAnswer === answer}
               />
-              <label htmlFor={`answer-${index}`}>
+              {/* onClick イベントで e.preventDefault() を呼び出すことで、クリックイベントのデフォルトの動作（ラジオボタンの選択）をキャンセルします。 */}
+              <label htmlFor={`answer-${index}`} onClick={(e) => e.preventDefault()}>
                 {answer}
               </label>
             </div>
           ))}
+
           {showAnswer && (
             <div>
               {selectedAnswer === correctAnswer ? (
