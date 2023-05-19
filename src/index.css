@@ -14,7 +14,9 @@ button {
   margin-bottom: 20px;
 }
 
-button.next-question {
+button.next-question,
+.hint-button,
+.detail-button {
   width: 130px;
   margin-top: 40px;
 }
@@ -61,11 +63,11 @@ button.next-question {
   padding-top: 40px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
+/* @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin 2s linear infinite;
   }
-}
+} */
 
 /* @media only screen and (max-width: 480px) {
   .App {
@@ -99,9 +101,9 @@ button.next-question {
   transition: color 0.2s ease;
 }
 
-.App-link:hover {
+/* .App-link:hover {
   color: #da4f20;
-}
+} */
 
 @keyframes App-logo-spin {
   from {
@@ -215,7 +217,6 @@ body {
 }
 
 .start-button,
-.next-question,
 .yaku-button,
 .yogo-button,
 .easy-button,
@@ -247,5 +248,10 @@ html, body {
   }
 
   .answer-item {
-    margin-bottom: 50px; /* 上下に10pxの空間を追加 */
+    margin-bottom: 30px;
+  }
+
+  .image-button {
+    display: block;
+    margin: 0 auto;
   }

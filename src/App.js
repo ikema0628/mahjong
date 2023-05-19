@@ -4,6 +4,7 @@ import QType from './components/QType';
 import YakuLevelSelect from './components/YakuLevelSelect';
 import YakuShokyu from './components/YakuShokyu';
 import YakuJokyu from './components/YakuJokyu';
+import { ChakraProvider } from '@chakra-ui/react'
 
 function App() {
   const [step, setStep] = useState(1); // ステップを管理するstate
@@ -27,7 +28,11 @@ function App() {
     }
   };
 
-  return <div className="App">{renderStep()}</div>;
+  return (
+  <ChakraProvider>
+  <div className="App">{renderStep()}</div>
+  </ChakraProvider>
+  )
 }
 
 export default App;

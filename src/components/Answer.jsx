@@ -17,7 +17,17 @@ const Answer = (props) => {
     setShowResult,
     YakuShokyuData,
     showResult,
+    showHint,
+    showDetail,
+    setShowDetail,
+    handleShowDetail,
   } = props;
+
+  const handleToggleHint = () => {
+    props.setShowHint((prevShowHint) => !prevShowHint);
+  };
+
+  const currentQuestion = props.currentQuestion;
 
 
   const handleAnswerClick = (event) => {
@@ -70,13 +80,9 @@ const Answer = (props) => {
                 onChange={handleAnswerClick}
                 checked={selectedAnswer === answer}
               />
-              {/* onClick イベントで e.preventDefault() を呼び出すことで、クリックイベントのデフォルトの動作（ラジオボタンの選択）をキャンセルします。 */}
-              <label htmlFor={`answer-${index}`} onClick={(e) => e.preventDefault()}>
-                {answer}
-              </label>
+              <label htmlFor={`answer-${index}`}>{answer}</label>
             </div>
           ))}
-
           {showAnswer && (
             <div>
               {selectedAnswer === correctAnswer ? (
@@ -86,14 +92,25 @@ const Answer = (props) => {
               )}
               <p>正解は「{correctAnswer}」です。</p>
               {currentQuestionIndex === YakuShokyuData.length - 1 ? (
-                <button className="next-question" onClick={handleShowResult}>
-                  結果
-                </button>
-              ) : (
-                <button className="next-question" onClick={handleNextQuestion}>
-                  次の問題へ
-                </button>
-              )}
+  <>
+    <button className="detail-button" onClick={handleShowDetail}>
+      詳細
+    </button>
+    <button className="next-question" onClick={handleShowResult}>
+      結果
+    </button>
+  </>
+) : (
+  <>
+    <button className="detail-button" onClick={handleShowDetail}>
+      詳細
+    </button>
+    <button className="next-question" onClick={handleNextQuestion}>
+      次の問題へ
+    </button>
+  </>
+)}
+
               {!showResult && (
                 <p className="answer-count">
                   {currentQuestionCount} / {YakuShokyuData.length}
@@ -101,10 +118,28 @@ const Answer = (props) => {
               )}
             </div>
           )}
+          <div className="hint-container">
+            <button className="hint-button" onClick={handleToggleHint}>
+              {showHint ? "×💡" : "💡"}
+            </button>
+            {showHint && (
+              <div>
+                <p>{currentQuestion.hint}</p>
+                {currentQuestion.image && (
+                  <img
+                    src={currentQuestion.image}
+                    alt=""
+                    className="image-button"
+                  />
+                )}
+              </div>
+            )}
+          </div>
         </>
       )}
     </div>
   );
+
 };
 
 export default Answer;

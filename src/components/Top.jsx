@@ -1,6 +1,5 @@
 import React from 'react';
-import azaraSvg from '../img/azara.svg';
-// import titllePng from '../img/titlle.png';
+import azaraSvg from '../images/azara.svg';
 import '../index.css';
 
 function Top({ setStep }) {
@@ -11,7 +10,6 @@ function Top({ setStep }) {
   return (
     <div>
       <h1>麻雀クイズ</h1>
-      {/* <img src={tittlePng} alt="Tottle" className="tittle-image" /> */}
       <img src={azaraSvg} alt="Azara" className="responsive-image" />
       <button onClick={handleStartClick} className="start-button">Start</button>
     </div>
@@ -19,6 +17,10 @@ function Top({ setStep }) {
 }
 
 export default Top;
+
+
+
+
 
 
 
