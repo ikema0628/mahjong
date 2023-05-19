@@ -1,5 +1,6 @@
 import React from "react";
 import Score from "./Score";
+import hint from "../images/hint.png";
 
 const Answer = (props) => {
   const {
@@ -119,21 +120,25 @@ const Answer = (props) => {
             </div>
           )}
           <div className="hint-container">
-            <button className="hint-button" onClick={handleToggleHint}>
-              {showHint ? "×💡" : "💡"}
-            </button>
-            {showHint && (
-              <div>
-                <p>{currentQuestion.hint}</p>
-                {currentQuestion.image && (
-                  <img
-                    src={currentQuestion.image}
-                    alt=""
-                    className="image-button"
-                  />
-                )}
-              </div>
-            )}
+          <button className="hint-button" onClick={handleToggleHint}>
+  {showHint ? (
+    <img src={hint} alt="Hint Icon" className="hint-icon" />
+  ) : (
+    <img src={hint} alt="Hint Icon" className="hint-icon" />
+  )}
+</button>
+{showHint && (
+  <div>
+    <p>{currentQuestion.hint}</p>
+    {currentQuestion.image && (
+      <img
+        src={currentQuestion.image}
+        alt=""
+        className="image-button"
+      />
+    )}
+  </div>
+)}
           </div>
         </>
       )}

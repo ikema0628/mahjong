@@ -1,4 +1,11 @@
-button {
+.start-button,
+.yaku-button,
+.yogo-button,
+.easy-button,
+.hard-button,
+.detail-button,
+.next-question,
+.restart-button {
   padding: 10px;
   font-size: 1rem;
   font-weight: bold;
