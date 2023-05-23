@@ -67,7 +67,7 @@ button.next-question,
   color: #0c396a;
   /* background-color: #FCF300; */
   min-height: 100vh;
-  padding-top: 40px;
+  padding-top: auto;
 }
 
 /* @media (prefers-reduced-motion: no-preference) {
@@ -180,10 +180,11 @@ ul {
 
 /* Mahjong Quiz */
 h1 {
+  padding-top: 4.5rem;
   font-size: 2rem;
   font-weight: bold;
   text-align: center;
-  margin-bottom: 1rem; /* h1とh2の間にスペースを追加 */
+  margin-bottom: 0.5rem; /* h1とh2の間にスペースを追加 */
 }
 
 h2 {
@@ -258,7 +259,39 @@ html, body {
     margin-bottom: 30px;
   }
 
+  .hint-container {
+    position: relative;
+  }
+
   .image-button {
     display: block;
     margin: 0 auto;
   }
+
+  .hint-container {
+    margin-top: -15px;
+    margin-bottom: 10px;
+  }
+
+  .hint-content {
+    background-color: #00af50;
+    padding: 20px;
+    margin-top: -30px; /* 上部の余白 */
+    color: white;
+    font-weight: bold;
+  }
+
+  .question {
+    font-size: 1.6rem;
+    background-color: #00af50;
+    padding: 20px;
+    color: white;
+    font-weight: bold;
+  }
+
+  @media (max-width: 480px) {
+    .hint-content {
+      background-color: #00af50;
+    }
+  }
+

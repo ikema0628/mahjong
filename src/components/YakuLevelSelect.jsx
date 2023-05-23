@@ -11,11 +11,11 @@ function YakuLevelSelect({ setStep }) {
 
   return (
     <div>
-      <h1>Mahjong Quiz</h1>
-      <h2>Select the level</h2>
+      <h1>麻雀クイズ</h1>
+      <h2>★★★</h2>
       <div className="button-container">
-  <button onClick={handleShokyuClick} className="easy-button">easy</button>
-  <button onClick={handleJokyuClick} className="hard-button">hard</button>
+  <button onClick={handleShokyuClick} className="easy-button">初級</button>
+  <button onClick={handleJokyuClick} className="hard-button">上級</button>
 </div>
     </div>
   );

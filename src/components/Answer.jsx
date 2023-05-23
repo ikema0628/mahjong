@@ -1,6 +1,6 @@
 import React from "react";
 import Score from "./Score";
-import hint from "../images/hint.png";
+import hint from "../images/hint.svg";
 
 const Answer = (props) => {
   const {
@@ -19,10 +19,14 @@ const Answer = (props) => {
     YakuShokyuData,
     showResult,
     showHint,
+    setShowHint,
     showDetail,
     setShowDetail,
     handleShowDetail,
   } = props;
+
+  const [showQuestion, setShowQuestion] = React.useState(true);
+
 
   const handleToggleHint = () => {
     props.setShowHint((prevShowHint) => !prevShowHint);
@@ -34,6 +38,7 @@ const Answer = (props) => {
   const handleAnswerClick = (event) => {
     setSelectedAnswer(event.target.value);
     setShowAnswer(true);
+    setShowHint(false); // ヒントボタンを非表示にする
     if (event.target.value === correctAnswer) {
       setCorrectCount(correctCount + 1);
     }
@@ -42,6 +47,7 @@ const Answer = (props) => {
   const handleNextQuestion = () => {
     setShowAnswer(false);
     setSelectedAnswer(null);
+    setShowHint(false); // ヒントを非表示にする
     if (currentQuestionIndex < YakuShokyuData.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     } else {
@@ -57,7 +63,9 @@ const Answer = (props) => {
 
   const handleShowResult = () => {
     setShowResult(true);
+    setShowQuestion(false);
   };
+
 
   return (
     <div className="answer-section">
@@ -94,23 +102,37 @@ const Answer = (props) => {
               <p>正解は「{correctAnswer}」です。</p>
               {currentQuestionIndex === YakuShokyuData.length - 1 ? (
   <>
-    <button className="detail-button" onClick={handleShowDetail}>
-      詳細
-    </button>
-    <button className="next-question" onClick={handleShowResult}>
-      結果
-    </button>
-  </>
-) : (
-  <>
-    <button className="detail-button" onClick={handleShowDetail}>
-      詳細
-    </button>
-    <button className="next-question" onClick={handleNextQuestion}>
-      次の問題へ
-    </button>
-  </>
-)}
+                  <div className="detail-container">
+                    <button className="detail-button" onClick={handleShowDetail}>
+                      詳細
+                    </button>
+                    {showDetail && (
+                      <div className="detail-content">
+                        {currentQuestion.detailimage && (
+                          <img
+                            src={currentQuestion.detailimage}
+                            alt=""
+                            className="detail-button"
+                          />
+                        )}
+                      </div>
+                    )}
+                    <button className="next-question" onClick={handleShowResult}>
+                      結果
+                    </button>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <button className="detail-button" onClick={handleShowDetail}>
+                    詳細
+                  </button>
+
+                  <button className="next-question" onClick={handleNextQuestion}>
+                    次の問題へ
+                  </button>
+                </>
+              )}
 
               {!showResult && (
                 <p className="answer-count">
@@ -120,31 +142,25 @@ const Answer = (props) => {
             </div>
           )}
           <div className="hint-container">
-          <button className="hint-button" onClick={handleToggleHint}>
-  {showHint ? (
-    <img src={hint} alt="Hint Icon" className="hint-icon" />
-  ) : (
-    <img src={hint} alt="Hint Icon" className="hint-icon" />
-  )}
-</button>
-{showHint && (
-  <div>
-    <p>{currentQuestion.hint}</p>
-    {currentQuestion.image && (
-      <img
-        src={currentQuestion.image}
-        alt=""
-        className="image-button"
-      />
-    )}
-  </div>
-)}
+            <button className="hint-button" onClick={handleToggleHint}>
+              <img src={hint} alt="Hint Icon" className="hint-icon" />
+            </button>
+            {showHint && (
+              <div className="hint-content">
+                <p>{currentQuestion.hint}</p>
+                <p>{currentQuestion.hint2}</p>
+                <p>{currentQuestion.hint3}</p>
+                {currentQuestion.image && (
+                  <img src={currentQuestion.image} alt="" className="image-button" />
+                )}
+              </div>
+            )}
           </div>
         </>
       )}
     </div>
   );
-
 };
 
 export default Answer;
+

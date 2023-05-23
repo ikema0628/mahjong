@@ -11,8 +11,8 @@ function QType({ setStep }) {
 
   return (
     <div>
-      <h1>Mahjong Quiz</h1>
-      <h2>select the type of quiz</h2>
+      <h1>麻雀クイズ</h1>
+      <h2>★★★</h2>
       <div className="button-container">
       <button onClick={handleYakuClick} className="yaku-button">役</button>
       <button onClick={handleYogoClick} className="yogo-button">用語</button>
